@@ -1,5 +1,4 @@
 import router from "express";
-import mongoose from "mongoose";
 
 import usernameModel from "../models/username.js";
 
@@ -31,5 +30,7 @@ usernameRouter.post("/", (req, res) => {
     res.status(201).send(saved);
   });
 });
+
+usernameRouter.all("/", (req, res) => res.sendStatus(405));
 
 export default usernameRouter;
