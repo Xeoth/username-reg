@@ -4,11 +4,15 @@ import usernameModel from "../models/username.js";
 
 const usernameRouter = router();
 
-// usernameRouter.get("/", (req, res) => {
-//   const { userID } = req.params;
+usernameRouter.get("/", async (req, res) => {
+  const { id } = req.query;
 
-//   usernameModel
-// });
+  if (!id) return res.status(400).send("Please provide an ID");
+
+  const usernames = await usernameModel.find({ id: id }).limit(10).exec();
+
+  res.status(200).send(usernames);
+});
 
 usernameRouter.post("/", (req, res) => {
   const { id, name } = req.body;
@@ -31,6 +35,6 @@ usernameRouter.post("/", (req, res) => {
   });
 });
 
-usernameRouter.all("/", (req, res) => res.sendStatus(405));
+usernameRouter.all("/", (_req, res) => res.sendStatus(405));
 
 export default usernameRouter;

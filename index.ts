@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 import usernameRouter from "./routes/usernames.js";
+import nicknameRouter from "./routes/nicknames.js";
 
 mongoose.connect("mongodb://localhost/username_logger", {
   useUnifiedTopology: true,
@@ -24,5 +25,8 @@ app.use(
 );
 
 app.use("/username", usernameRouter);
+app.use("/nickname", nicknameRouter);
 
-app.listen(process.env.PORT, () => console.log("9k list"));
+app.listen(process.env.PORT, () =>
+  console.log(`Logger running on port ${process.env.PORT}`)
+);
