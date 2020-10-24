@@ -1,9 +1,9 @@
 import mongoose from "mongoose";
 
 const nicknameSchema = new mongoose.Schema({
-  id: String,
-  name: String,
-  changeDate: Date,
+  id: { type: String, required: true },
+  name: { type: String, required: true },
+  date: { type: Date, required: true },
 });
 
 const nicknameModel = mongoose.model("Nickname", nicknameSchema);
