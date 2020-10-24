@@ -4,7 +4,6 @@ import mongoose from "mongoose";
 import usernameModel from "../models/username.js";
 
 const usernameRouter = router();
-const db = mongoose.connection;
 
 // usernameRouter.get("/", (req, res) => {
 //   const { userID } = req.params;
@@ -13,11 +12,13 @@ const db = mongoose.connection;
 // });
 
 usernameRouter.post("/", (req, res) => {
-  const { userID, username } = req.body;
+  const { id, name } = req.body;
+
+  if (!id || !name) return res.sendStatus(400);
 
   const usernameDoc = new usernameModel({
-    id: userID,
-    name: username,
+    id: id,
+    name: name,
     date: new Date(),
   });
 
