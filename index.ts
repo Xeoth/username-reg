@@ -1,9 +1,15 @@
 import express from "express";
+import mongoose from "mongoose";
 import dotenv from "dotenv";
 dotenv.config();
 
 import authenticate from "./middleware/auth.js";
 import usernameRouter from "./routes/usernames.js";
+
+mongoose.connect("mongodb://localhost/username_logger", {
+  useUnifiedTopology: true,
+  useNewUrlParser: true,
+});
 
 const app = express();
 
