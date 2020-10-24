@@ -11,8 +11,6 @@ mongoose.connect("mongodb://localhost/username_logger", {
   useNewUrlParser: true,
 });
 
-const password = process.env.LOGGER_PASSWORD;
-
 const app = express();
 
 app.use(express.json());
@@ -20,7 +18,7 @@ app.use(express.json());
 app.use(
   basicAuth({
     users: {
-      admin: password,
+      admin: process.env.LOGGER_PASSWORD,
     },
   })
 );
