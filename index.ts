@@ -7,7 +7,7 @@ dotenv.config();
 import usernameRouter from "./routes/usernames.js";
 import nicknameRouter from "./routes/nicknames.js";
 
-mongoose.connect("mongodb://localhost/username_logger", {
+mongoose.connect(process.env.MONGODB_URL, {
   useUnifiedTopology: true,
   useNewUrlParser: true,
 });
